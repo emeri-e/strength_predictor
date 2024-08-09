@@ -5,7 +5,7 @@ document.getElementById('predict-form').addEventListener('submit', async functio
     const replacement = document.getElementById('replacement').value;
     const time = document.getElementById('time').value;
 
-    const response = await fetch('https://162.0.230.192:8000/predict', {
+    const response = await fetch('/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
