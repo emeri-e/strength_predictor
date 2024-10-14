@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compressive Strength Predictor</title>
+    <title>{{ aggregate }} - {% if aggregate == 'lime' %}CBR{% else %}Compressive Strength{% endif %} Predictor</title>
     <link rel="stylesheet" href="./static/css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Compressive Strength Predictor</h1>
+        <h1>{% if aggregate == 'lime' %}CBR{% else %}Compressive Strength{% endif %} Predictor (Aggregate = {{ aggregate }})</h1>
         <form id="predict-form">
             <label for="model">Model:</label>
             <select id="model" name="model">
@@ -17,15 +17,17 @@
                 <option value="ann">ANN</option>
             </select>
 
-            <label for="replacement">Replacement (%):</label>
+            <label for="replacement">{% if aggregate == 'lime' %}lime content(%){% else %}Replacement (%){% endif %}:</label>
             <input type="number" id="replacement" name="replacement" required>
 
-            <label for="time">Time (days):</label>
+            <label for="time">{% if aggregate == 'lime' %}water content(%){% else %}Time (days){% endif %}:</label>
             <input type="number" id="time" name="time" required>
 
             <button type="submit">Predict</button>
         </form>
-        <div id="result"></div>
+        <div id="result">
+            <!-- Display the result dynamically here -->
+        </div>
     </div>
     <script src="./static/js/scripts.js"></script>
 </body>
